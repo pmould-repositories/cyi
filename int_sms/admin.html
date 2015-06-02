@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CYI</title>
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	  <link rel="stylesheet" href="alerts_js/jquery.alerts.css">
+	<link rel="stylesheet"
+		href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.min.css">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.1/jquery.qtip.min.css">	
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>	
+<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.1/jquery.qtip.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script
+	src="http://cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.js"></script>
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type= "text/javascript" src = "countries.js"></script>
+<script src="functions.js"></script>
+<script src="cyi.js"></script>
+<script src="cyi-trans-req.js"></script>
+<script src="cyi-clients.js"></script>
+<script src="cyi-interreq.js"></script>
+<script src="formvalidation.js"></script>
+<script src="cyi-calendar.js"></script>
+<script type="text/javascript" src="alerts_js/jquery.alerts.js"></script>
+
+<script>
+	$(function() {
+		$("#admin-tabs").tabs();
+	});
+</script>
+
+<link href='http://fonts.googleapis.com/css?family=Enriqueta'
+	rel='stylesheet' type='text/css'>
+<style type="text/css">
+* {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+	font-size: 100%;
+	font-family: "Enriqueta", Georgia, "Times New Roman", serif;
+	box-sizing: border-box
+}
+
+.clearfix {
+	*zoom: 1
+}
+
+.clearfix::before, .clearfix::after {
+	content: " ";
+	display: table
+}
+
+.clearfix:after {
+	clear: both
+}
+
+.col-12 {
+	width: 100%
+}
+
+.col-10 {
+	width: 83.3%
+}
+
+.col-8 {
+	width: 66.6%
+}
+
+.col-6 {
+	width: 50%
+}
+
+.col-5 {
+	width: 41.65%
+}
+
+.col-4 {
+	width: 33.3%
+}
+
+.floated {
+	float: left;
+	padding: 10px
+}
+
+.container {
+	padding: 60px 0;
+	background:
+		url(http://static.wixstatic.com/media/9631ca_c196f2a338a848668b6766a9d5d07ee4.jpg_srz_p_1140_896_75_22_0.50_1.20_0.00_jpg_srz)
+		50% 20% scroll no-repeat;
+	background-size: 130%
+}
+
+img {
+	width: 100%
+}
+
+h1 {
+	font-size: 2em
+}
+
+h2 {
+	font-size: 1.4em;
+	line-height: 3
+}
+
+.inner {
+	position: relative;
+	max-width: 980px;
+	margin: 0 auto
+}
+
+.inner-fluid {
+	position: relative;
+	max-width: 100%;
+}
+
+.header {
+	background: #96CD36;
+	box-shadow: rgba(0, 0, 0, 0.7) 0 0 5px
+}
+
+.header .inner, .header .inner-fluid {
+	background: #575757;
+	height: 150px;
+	overflow: hidden
+}
+
+.header .inner-fluid
+		.logo {
+	display: inline-block;
+	width: 150px;
+	font-size: 0;
+	margin-top: -5px
+}
+
+.slogan {
+	display: inline-block;
+	color: #f5f5f5;
+	font: bold 1.9em "Enriqueta", Georgia, "Times New Roman", serif;
+	padding: 0 20px;
+	vertical-align: top
+}
+
+.slogan p {
+	margin-bottom: 10px
+}
+
+.slogan p:first-letter {
+	color: #96CD36
+}
+
+.slogan p:nth-child(2) {
+	margin-left: 30px
+}
+
+.slogan p:nth-child(3) {
+	margin-left: 60px
+}
+
+.submenu, .nav li, .nav a, .request {
+	-webkit-transition: all .3s;
+	transition: all .3s
+}
+
+.nav {
+	position: absolute;
+	top: 20%;
+	right: 0;
+	padding: 0 30px
+}
+
+.nav-inner {
+	position: relative
+}
+
+.nav li {
+	display: inline-block;
+	line-height: 4.8;
+	vertical-align: top
+}
+
+.nav li a {
+	color: #f5f5f5;
+	text-transform: uppercase;
+	padding: 30px 5px;
+	font-size: 0.75em
+}
+
+.nav li:hover>a {
+	background: #f5f5f5;
+	color: #96CD36;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000
+}
+
+.submenu {
+	margin-top: 10px;
+	display: none
+}
+
+.submenu li {
+	display: block;
+	line-height: initial
+}
+
+.submenu li a {
+	display: block;
+	padding: 5px;
+	border-radius: 12px;
+	color: #f1f1f1;
+	text-align: center
+}
+
+.submenu li a:hover {
+	background: #f1f1f1;
+	color: #96CD36;
+	border: none
+}
+
+.current {
+	background: #96CD36;
+	color: #575757 !important;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000
+}
+
+.has-kids:hover>.submenu {
+	display: block
+}
+
+.blurb {
+	color: #346904;
+	background: rgba(255, 255, 255, 0.8);
+	padding: 10px;
+	margin-bottom: 30px
+}
+
+.blurb p {
+	line-height: 1.5;
+	margin-bottom: 15px;
+	font-weight: bold
+}
+
+.aside {
+	background: #96CD36;
+	color: #f1f1f1;
+	padding: 30px 10px;
+	margin-top: 80px
+}
+
+.aside blockquote {
+	font-size: 1.8em;
+	padding: 30px 0
+}
+
+.request {
+	display: block;
+	width: 60%;
+	margin: 0 auto;
+	background: #96CD36;
+	color: #f1f1f1;
+	text-transform: capitalize;
+	box-shadow: rgba(0, 0, 0, 0.6) 0 1px 4px;
+	border-radius: 5px;
+	padding: 10px 50px;
+	text-align: center
+}
+
+.request:hover {
+	background: #575757
+}
+
+.footer {
+	padding: 30px 0;
+	background: #96CD36;
+	color: #f5f5f5;
+	border-top: 4px solid #575757
+}
+
+#admin-main {
+	height: 600px
+}
+
+.center-block {
+	display: block;
+	margin: 0 auto
+}
+
+.center {
+	text-align: center;
+}
+
+#admin-login-cont {
+	position: relative;
+	padding: 45px 20px;
+	margin-top: 0px;
+	background: rgba(255, 255, 255, 0.9);
+	border-radius: 5px;
+	border: 1px solid #ccc
+}
+
+#admin-login-cont h2 {
+	color: #346904
+}
+
+#admin-login input, #admin-login label {
+	display: block
+}
+
+#admin-login label {
+	display: block;
+	margin-bottom: 5px
+}
+
+#admin-login .inputfield {
+	height: 40px;
+	width: 100%;
+	background-color: rgba(204, 204, 204, 0.5);
+}
+
+#admin-login .inputfield {
+	margin-bottom: 20px
+}
+
+#admin-login .btn {
+	padding: 10px 20px;
+	width: auto;
+	background-color: rgba(204, 204, 204, 0.5);
+	border-radius: 5px;
+	cursor: pointer
+}
+
+#admin-login .btn:hover {
+	background-color: rgba(204, 204, 204, 1)
+}
+
+#admin-login .btn:active {
+	background-color: #AAA
+}
+
+#admin-con {
+	min-height: 600px;
+	padding: 0px
+}
+
+.admin-controls {
+	width: 200px;
+	height: 600px;
+	padding: 5px;
+	background: rgba(255, 255, 255, 0.9); /*position:relative;*/
+	position: absolute;
+	float: left;
+}
+/* Controls CSS */
+.admin-controls h2 {
+	text-align: left
+}
+
+.admin-controls p {
+	padding: 12px 2px;
+	border-top: 1px solid #ccc;
+	cursor: pointer
+}
+
+#admin-tabs { /*width:1240px;*/
+	background: rgba(255, 255, 255, 0.9);
+	margin-left: 200px;
+	margin-left: 200px;
+}
+/*JQUERY UI CSS <Modifications*/
+.ui-tabs .ui-tabs-panel {
+	padding: 1em .1em
+}
+
+.ui-widget-header .ui-state-active {
+	background: #B3B3B3
+}
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 14px;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	table-layout: fixed
+}
+
+thead, tfoot { /*background-color: rgba(204, 204, 204, 0.65);*/
+	background: #B3B3B3;
+	font-weight: 600
+}
+
+thead th {
+	vertical-align: bottom;
+	padding: 10px 7px 7px;
+}
+
+tfoot th {
+	vertical-align: bottom;
+	padding: 7px 7px 10px;
+}
+
+table tr:nth-child(even) td {
+	background: rgba(243, 243, 243, 0.85)
+}
+
+th, td {
+	padding: 7px;
+	text-align: left;
+	font-size: 15px; /*border: 1px solid #ccc;*/
+}
+
+tr {
+	border: 1px solid #ccc
+}
+
+tbody tr {
+	cursor: pointer
+}
+
+.iD {
+	width: 50%
+}
+
+.interreq  td.dU::after {
+	content: " hours"
+}
+
+.interreq .aID {
+	width: 100%
+}
+
+.interreq .aDM, .interreq .aDU {
+	width: 100%;
+}
+
+.interreq .sT, .interreq .eT {
+	width: 100%;
+}
+
+.interreq .La {
+	width: 100%;
+}
+
+.interreq .cN {
+	width: 100%;
+}
+
+.interreq .fU {
+	width: 100%;
+}
+
+.interreq .aS {
+	width: 5.5em;
+}
+
+td.Ass {
+	border-right: 1px solid #CCC;
+	border-left: 1px solid #CCC
+}
+
+td.aSS select {
+	width: 100%
+}
+td.aSS {border-right: 1px solid #CCC;border-left: 1px solid #CCC}
+        td.Ass select {width: 100%}
+
+.transreq .aID {
+	width: 100%
+}
+
+.transreq .dR {
+	width: 100%;
+}
+
+.transreq .dD {
+	width: 100%;
+}
+
+.transreq .lA {
+	width: 100%;
+}
+
+.transreq .cA {
+	width: 100%;
+}
+
+.transreq .fU {
+	width: 5.5em;
+}
+
+.clients .fN {
+	width: 100%
+}
+
+.clients .nL {
+	width: 100%;
+}
+
+.clients .aDD {
+	width: 100%;
+}
+
+.clients .pH {
+	width: 100%;
+}
+
+.clients .cE {
+	width: 100%;
+}
+
+.clients .eM {
+	width: 100%;
+}
+
+.intr .iID {
+	width: 100%
+}
+
+.intr .fN {
+	width: 100%
+}
+
+.intr .lA {
+	width: 100%
+}
+
+.intr .aDD {
+	width: 100%
+}
+
+.intr .pL {
+	width: 100%
+}
+
+.intr .aV {
+	width: 100%
+}
+
+table th, table td {
+	width: 100%
+}
+
+.header {
+	background-color: yellow
+}
+/*----- Accordion -----*/
+.accordion, .accordion * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.accordion {
+	overflow: hidden;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+	border-radius: 3px;
+	margin: 25px auto
+}
+
+/*----- Section Titles -----*/
+.acc_tr_head {
+	width: 100%;
+	padding: 15px;
+	display: inline-block;
+	border-bottom: 1px solid #0a3153;
+	margin: 0;
+	transition: all .1s linear
+}
+
+.acc_tr_head.active, .acc_tr_head:hover {
+	background: #0a3153;
+	color: white
+}
+
+.acc_sec:last-child .acc_tr_head {
+	border-bottom: none;
+}
+
+/*----- Section Content -----*/
+.acc_down {
+	padding: 15px;
+	display: none;
+	border-bottom: 1px solid #0a3153;
+	padding-bottom: 3.5vw
+}
+
+.acc_sec:last-child .acc_down {
+	border-bottom: none;
+}
+
+.qa-container h4 {
+	font-size: 18px;
+}
+
+.q-header, .q-answer {
+	text-align: left;
+}
+
+.q-answer {
+	font-weight: normal;
+	font-size: 16px;
+}
+
+.item-data {
+	display: none;
+	width: inherit;
+	height: auto;
+	border: 1px solid #ccc;
+}
+
+.active { /*background : #eee;*/
+	background: rgba(243, 243, 243, 0.85);
+	color: #000;
+}
+
+/*Drop Down Styles 
+   Interpreter Tab*/
+.admin-tabs .dropdown {
+	background: rgba(243, 243, 243, 0.85);
+	float: left;
+	width: 100%;
+	padding: 7px;
+	display: none;
+}
+
+.admin-tabs .trdrp td {
+	padding: 0px
+}
+
+.admin-tabs fieldset {
+	float: left;
+	width: 100%;
+	padding: 10px;
+	border: none;
+}
+
+.admin-tabs fieldset label {
+	float: left
+}
+
+.admin-tabs fieldset label:first-child { /*width:300px;*/
+	
+}
+
+.admin-tabs fieldset label {
+	width: 25%
+}
+
+.admin-tabs fieldset label span:first-child {
+	font-weight: 600
+}
+
+.admin-tabs fieldset label span:nth-child(2) {
+	display: block;
+}
+
+.intr fieldset label:first-child { /*width:300px;*/
+	
+}
+
+.intr fieldset label:nth-of-type(2) { /*width:175px;*/
+	
+}
+
+/*Drop Down Styles 
+   Interpreter Tab*/
+.transreq fieldset label:first-child {
+	width: 300px;
+}
+
+/*Drop Down Styles 
+   Interpreter Tab*/
+.interreq fieldset label:first-child, .interreq fieldset label:nth-of-type(2)
+	{ /*width:175px;*/
+	
+}
+
+.interreq fieldset:nth-child(1) label {
+	width: 20%
+}
+
+/* Modal CSS */
+.modal-holder{
+	display:none;
+	position:fixed;
+	z-index:1000;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.5)
+}
+.modal{
+	position: relative;
+	top: 13%;
+	left: 7%;
+	width: 85%;
+	min-height: 80%;
+	background:
+		url(http://static.wixstatic.com/media/9631ca_3fe6a7f4d8384ce686c411bf28b7e990.jpg_srz_p_1583_881_75_22_0.50_1.20_0.00_jpg_srz)
+		50% 0% no-repeat;
+	overflow: auto;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.modalBox {
+	display: none;
+	position: absolute;
+	top: 8%;
+	width: 80%;
+	margin: 0 10%;
+	background: rgba(255, 255, 255, 0);
+	padding: 15px
+}
+
+.modalBox div {
+	padding: 15px
+}
+
+.modalBox h2 {
+	text-align: center;
+	padding: 15px 0;
+	text-transform: uppercase;
+	color: ##333333
+}
+
+.modalBox label {
+	margin-bottom: 5px
+}
+
+.modalBox input, .modalBox select {
+	border-radius: 5px;
+	padding: 5px;
+	background: #575757;
+	color: #f1f1f1
+}
+
+.modalBox input, .modalBox textarea {
+	display: block;
+	width: 45%;
+	background: #575757;
+	color: #f1f1f1
+}
+
+.modalBox textarea {
+	height: 190px
+}
+
+.modalBox input::-webkit-input-placeholder, .modalBox textarea::-webkit-input-placeholder
+	{
+	color: #fff
+}
+
+.modalBox input:-moz-placeholder, .modalBox textarea:-moz-placeholder {
+	color: #fff
+}
+
+.modalBox input::-moz-placeholder, .modalBox textarea::-moz-placeholder
+	{
+	color: #fff
+}
+
+.modalBox input:-ms-input-placeholder, .modalBox textarea::-webkit-input-placeholder
+	{
+	color: #fff
+}
+
+.modalBox .request {
+	width: initial;
+	float: right;
+	background: #96CD36
+}
+
+.required::after {
+	content: '*';
+	color: red;
+	padding-left: 3px
+}
+
+.close {
+	width: 40px;
+	height: 40px;
+	color: #f1f1f1;
+	border: 2px solid #fff;
+	position: fixed;
+	top: 13%;
+	font-size: 22px;
+	background: #575757;
+	text-align: center;
+	cursor: pointer
+}
+
+#cancel {
+	background: #575757;
+	float: left
+}
+
+select[name="prim_lang"], select[name="secnd_lang"], select[name="third_lang"], select[name="fourth_lang"]
+	{
+	display: block
+}
+
+/* Form CSS */
+label.error {
+	color: #F00;
+	display: inline-block !important;
+	margin-left: 10px
+}
+/* Full Calender */
+.fc-title
+{
+	padding-top:10px !important;
+}
+.fc-time-grid .fc-slats td {
+  height: 35px;
+  border-bottom: 0;
+}
+.qtip .item, .qtip .qtip-title{padding: 5px 10px;font-size: 12px;line-height: 12px;width: 210px;margin-right: -28px;}
+.qtip .item:nth-of-type(even) {background: rgba(243, 243, 243, 0.85);}
+.qtip .name
+{font-style:italic;width: 106px;display:inline-block;}
+.qtip .value
+{font-weight:800;width: 77px;display:inline-block;vertical-align: top;}
+.qtip-content
+{width: 100%;padding: 9px 10px;}
+.qtip-bootstrap{background-color: rgba(255, 255, 255, 0.9)}
+.qtip-bootstrap .qtip-content {padding: 0px}
+#calendar{margin-right: 100px;}
+.tooltip-title{text-decoration: underline;font-weight:bolder;} 
+</style>
+</head>
+<body>
+  <div class="modal-holder">
+	<div class="modal">
+		<div class="close">x</div>
+		<form id="requestt" class="modalBox clearfix">
+			<h2>Create Interpreting Request</h2>
+			<div>
+				<input name="client" type="text" placeholder="Client"
+					class="required">
+			</div>
+			<div>
+				<label class="required">Appointment Date</label><input
+					name="app_date" type="date">
+			</div>
+			<div>
+				<label class="required">Start Time</label> <select
+					name="start_time_hour" type="number"></select> :<select
+					name="start_time_min" type="number"></select>
+			</div>
+			<div>
+				<input name="duration" type="number" placeholder="Duration (in hrs)"
+					class="required">
+			</div>
+			<div>
+				<label class="required">Language </label><select name="lang"
+					type="text" placeholder="Language" class="required"></select>
+			</div>
+			<div>
+				<input name="lep_name" type="text" placeholder="LEP Name"
+					class="required">
+			</div>
+			<div>
+				<input name="contact_one" type="text" placeholder="Onsite Contact Name"
+					class="required">
+			</div>
+			<div>
+				<input name="contact_two" type="text" placeholder="Onsite Number">
+			</div>
+			<div>
+				<input name="contact_three" type="text" placeholder="Onsite Contact 2">
+			</div>
+			<div>
+				<label>Gender</label> <select name="inter_gender" type="text">
+					<option value='N'>Male</option>
+					<option value='Y' selected>Female</option>
+				</select>
+			</div>
+			<div>
+				<input name="rate" type="number" placeholder="Rate">
+			</div>
+			<div>
+				<input name="adress" type="text" placeholder="Location">
+			</div>
+			<div>
+				<textarea name="location_notes" placeholder="Location Notes"></textarea>
+			</div>
+			<div>
+				<textarea name="request_notes" placeholder="Request Notes"></textarea>
+			</div>
+			<div>
+				<input id="cancel" type="button" value="CANCEL" class="request">
+				<input type="submit" value="SUBMIT" class="request">
+			</div>
+		</form>
+
+		<form id="order" class="modalBox clearfix">
+			<h2>Create Translation Order</h2>
+			<div>
+				<input name="client_name" type="text" placeholder="Client Name"
+					class="required">
+			</div>
+			<div>
+				<label class="required">Date Due</label><input name="due_date"
+					type="date">
+			</div>
+			<div>
+				<input name="doc_type" type="text" placeholder="Document Type"
+					class="required">
+			</div>
+			<div>
+				<input name="nbr_of_pages" type="number"
+					placeholder="Number Of Pages" class="required">
+			</div>
+			<div>
+				<input name="cust_name" type="text" placeholder="Contact Name"
+					class="required">
+			</div>
+			<div>
+				<input name="cust_phone" type="number" placeholder="Phone Number"
+					class="required">
+			</div>
+			<div>
+				<input name="cust_fax" type="number" placeholder="Fax Number">
+			</div>
+			<div>
+				<input name="cust_email" type="text" placeholder="Email">
+			</div>
+			<div>
+				<label class="required">Language </label><select name="lang"
+					type="text" placeholder="Language" class="required"></select>
+			</div>
+			<div>
+				<label class="required">Notoring Required</label><select
+					name="notoring_rqd" type="text">
+					<option selected value='N'>No</option>
+					<option value='Y'>Yes</option>
+				</select>
+			</div>
+			<div>
+				<input name="rate" type="number" placeholder="Price"
+					class="required">
+			</div>
+
+			<div>
+				<label>Notes</label>
+				<textarea name="notes"></textarea>
+			</div>
+
+
+			<div>
+				<input type="submit" value="SUBMIT" class="request"> <input
+					id="cancel" type="button" value="CANCEL" class="request">
+			</div>
+		</form>
+
+		<form id="client" class="modalBox clearfix">
+			<h2>Create New Client</h2>
+			<div>
+				<input name="name" type="text" placeholder="Client Name"
+					class="required">
+			</div>
+			<div>
+				<input name="contact_name" type="text" placeholder="Contact Name"
+					class="required">
+			</div>
+			<div>
+				<input name="marketer" type="text" placeholder="Marketer">
+			</div>
+			<div>
+				<input name="adress" type="text" placeholder="Address">
+			</div>
+			<div>
+				<input name="zipcode" type="number" placeholder="Zip Code"
+					class="required">
+			</div>
+			<div>
+				<input name="email" type="text" placeholder="Email">
+			</div>
+			<div>
+				<input name="phone_num" type="number" placeholder="Phone Number">
+			</div>
+			<div>
+				<input name="cell_num" type="number" placeholder="Cell Number">
+			</div>
+			<div>
+				<input name="other_num" type="number" placeholder="Alternate Number">
+			</div>
+			<div>
+				<input name="fax_num" type="number" placeholder="Fax Number">
+			</div>
+			<div>
+				<input placeholder="Website URL" name="website" type="text">
+			</div>
+			<div>
+				<textarea name="notes" placeholder="Notes"></textarea>
+			</div>
+
+			<div>
+				<input id="cancel" type="button" value="CANCEL" class="request">
+				<input type="submit" value="SUBMIT" class="request">
+			</div>
+		</form>
+		<form id="interpreter" class="modalBox clearfix">
+			<h2>Create New Interpreter</h2>
+			<div>
+				<input name="first_name" type="text" placeholder="First Name"
+					class="required">
+			</div>
+			<div>
+				<input name="last_name" type="text" placeholder="Last Name"
+					class="required">
+			</div>
+			<div>
+				<input name="adress" type="text" placeholder="Street Address"
+					class="required">
+			</div>
+			<div>
+				<input name="zipcode" type="number" placeholder="Zip Code"
+					class="required">
+			</div>
+			<div>
+				<input name="phone" type="text" placeholder="Home Phone Number">
+			</div>
+			<div>
+				<input name="cell" type="text" placeholder="Cell Phone Number"
+					class="required">
+			</div>
+			<div>
+				<input name="fax" type="text" placeholder="Fax Number">
+			</div>
+			<div>
+				<input name="email" type="email" placeholder="Email"
+					class="required">
+			</div>
+			<div>
+				<label class="required" style="display:block">Primary Language </label>
+				<select style="display:inline-block" name="prim_lang" type="text" placeholder="Primary Language" class="required"></select>
+				<input style="display:inline-block;width: 25%" name="hourly_rate" type="number" placeholder="Hourly Rate"
+					class="required">
+			</div>
+			<div>
+				<label style="display:block">Secondary Language </label><select style="display:inline-block" 
+					name="secnd_lang" type="text" placeholder="Secondary Language"
+					></select>
+				<input style="display:inline-block;width: 25%" name="rate2" type="number" placeholder="Hourly Rate">
+			</div>
+			<div>
+				<label style="display:block">Third Language </label><select style="display:inline-block" 
+					name="third_lang" type="text" placeholder="Third Language"
+				    ></select>
+				<input style="display:inline-block;width: 25%" name="rate3" type="number" placeholder="Hourly Rate">
+			</div>
+			<div>
+				<label style="display:block">Fourth Language </label><select style="display:inline-block" 
+					name="fourth_lang" type="text" placeholder="Fourth Language"
+				    ></select>
+				<input style="display:inline-block;width: 25%" name="rate4" type="number" placeholder="Hourly Rate">
+			</div>
+			<div>
+				<label>Native Country </label><select id="country"
+					name="country" type="text" placeholder="Native Country"
+				    ></select>
+				    <script language="javascript">
+					populateCountries("country");
+ 					</script>
+			</div>
+			
+			<div>
+				<input name="cert_one" type="text" placeholder="Certification 1">
+			</div>
+			<div>
+				<input name="cert_two" type="text" placeholder="Certification 2">
+			</div>
+			<div>
+				<label class="required">Availability</label><select name="avail"
+					type="text">
+					<option selected value="Y">Yes</option>
+					<option value="N">No</option>
+				</select>
+			</div>
+			<div>
+				<label>Work Authorization Verified?</label> <select
+					name="work_auth_vrfd" type="text"
+					placeholder="Work Authorization Verified?">
+					<option value='N'>No</option>
+					<option value='Y' selected>Yes</option>
+				</select>
+			</div>
+			<div>
+				<input name="degree" type="text" placeholder="Degree">
+			</div>
+			<div>
+				<input name="license" type="text" placeholder="Licence">
+			</div>
+			<div>
+				<input name="miles_rate" type="number" placeholder="Miles Rate"
+					class="required">
+			</div>
+			<div>
+				<textarea name="notes" placeholder="Notes"></textarea>
+			</div>
+
+			<div>
+				<input id="cancel" type="button" value="CANCEL" class="request">
+				<input type="submit" value="SUBMIT" class="request">
+			</div>
+		</form>
+	</div>
+  </div>
+	<!--end modal-->
+	<div class="header">
+		<div class="inner-fluid clearfix">
+			<div class="logo">
+				<a href="#"><img
+					src="http://static.wixstatic.com/media/9631ca_65b15fb5857947f6a5449e82d9e60b1b.jpg_256"></a>
+			</div>
+			<h1 class="slogan">
+				<p>Culturally</p>
+				<p>Yours</p>
+				<p>Interpreting</p>
+			</h1>
+		</div>
+	</div>
+	<div id="admin-con" class="container clearfix">
+		<div class="admin-controls">
+			<h2>Controls</h2>
+			<p class="requestt">Create Request</p>
+			<p class="order">Create Order</p>
+			<p class="client">Create Client</p>
+			<p class="interpreter">Create Interpreter</p>
+		</div>
+		<div id="admin-tabs" class="floated admin-tabs">
+			<ul>
+				<li><a href="#tabs-5">Request Calendar</a></li>
+				<li><a href="#tabs-1">Interpreting Request</a></li>
+				<li><a href="#tabs-2">Translation Order</a></li>
+				<li><a href="#tabs-3">Clients</a></li>
+				<li><a href="#tabs-4">Interpreters</a></li>
+			</ul>
+			<div id="tabs-5" class="requestcal">
+				<div id="calendar"></div>
+			</div>
+			<div id="tabs-1" class="interreq">
+				<table sortable>
+					<thead>
+						<tr>
+							<th class="iD">ID</th>
+							<th class="aSS">Assign</th>
+							<th class="aDU">App. Date</th>
+							<th class="sT">Start Time</th>
+							<th class="dU">Duration</th>
+							<th class="La">Language</th>
+							<th class="aDM">Assigned To</th>
+							<th class="cN">Onsite Contact</th>
+							<th class="fU">Follow Up Call</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th class="iD">ID</th>
+							<th class="Ass">Assign</th>
+							<th class="aDU">App. Date</th>
+							<th class="sT">Start Time</th>
+							<th class="dU">Duration</th>
+							<th class="La">Language</th>
+							<th class="aDM">Assigned To</th>
+							<th class="cN">Onsite Contact</th>
+							<th class="fU">Follow Up Call</th>
+						</tr>
+					</tfoot>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div id="tabs-2" class="transreq">
+				<table sortable>
+					<thead>
+						<tr>
+							<th class="iD">ID</th>
+							<th class="oD">Order Date</th>
+							<th class="dD">Date Due</th>
+							<th class="lA">Language</th>
+							<th class="nP">Nbr of Pages</th>
+							<th class="eM">Email</th>
+							<th class="nA">Name</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th class="iD">ID</th>
+							<th class="oD">Order Date</th>
+							<th class="dD">Date Due</th>
+							<th class="lA">Language</th>
+							<th class="nP">Nbr of Pages</th>
+							<th class="eM">Email</th>
+							<th class="nA">Name</th>
+						</tr>
+					</tfoot>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<!--//End of Tab 2-->
+			<div id="tabs-3" class="clients">
+				<table sortable>
+					<thead>
+						<tr>
+							<th class="iD">ID</th>
+							<th class="nA">Name</th>
+							<!--<th class="cO">Contact</th>-->
+							<th class="pH">Phone</th>
+							<th class="cE">Cell</th>
+							<th class="Fa">Fax</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th class="iD">ID</th>
+							<th class="nA">Name</th>
+							<!--<th class="cO">Contact</th>-->
+							<th class="pH">Phone</th>
+							<th class="cE">Cell</th>
+							<th class="Fa">Fax</th>
+						</tr>
+					</tfoot>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<!--//End of Tab 3-->
+			<div id="tabs-4" class="intr">
+				<table id="intr" sortable>
+					<thead>
+						<tr>
+							<th class="iD">ID</th>
+							<th class="fN">First Name</th>
+							<th class="lN">Last Name</th>
+							<th class="lA1">Lang1</th>
+							<th class="lA2">Lang2</th>
+							<th class="lA3">Lang3</th>
+							<th class="lA4">Lang4</th>
+							<th class="aV">Avail</th>
+							<th class="cE">Certif</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th class="iD">ID</th>
+							<th class="fN">First Name</th>
+							<th class="lN">Last Name</th>
+							<th class="lA1">Lang1</th>
+							<th class="lA2">Lang2</th>
+							<th class="lA3">Lang3</th>
+							<th class="lA4">Lang4</th>
+							<th class="aV">Avail</th>
+							<th class="cE">Certif</th>
+						</tr>
+					</tfoot>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<!--//End of Tab 4-->
+		</div>
+	</div>
+	<div class="footer">
+		<div class="inner-fluid">
+			<p>Copyright &copy; 2014-2015 Culturally Yours Interpreting,
+				Inc-All Rights Reserved.</p>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	$(document).ready(
+			function(e) {
+				$('.item')
+						.click(
+								function(e) {
+									if ($(this).next('.item-data').css(
+											'display') != 'block') {
+										$('.active').slideUp('fast')
+												.removeClass('active');
+										$(this).next('.item-data').addClass(
+												'active').slideDown('slow');
+									} else {
+										$('.active').slideUp('fast')
+												.removeClass('active');
+									}
+								});
+			});
+
+	//Modal script
+		//close modal when done
+		$('.close,#cancel').click(function(){
+			$('.modal-holder,.modalBox').hide();
+		});
+		//show correct form on click
+		$('.admin-controls p ').click(function(){
+			var box = "#" + this.className;
+			$('.modal-holder'+','+box).show();
+		});
+</script>
+</html>

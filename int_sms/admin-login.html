@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CYI</title>
+	<link href='http://fonts.googleapis.com/css?family=Enriqueta' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		*{padding:0;margin:0;text-decoration:none;list-style:none;font-size:100%;font-family:"Enriqueta",Georgia,"Times New Roman",serif;box-sizing:border-box}
+		.clearfix{*zoom:1}
+		.clearfix::before,.clearfix::after{content:" ";display:table}
+		.clearfix:after{clear:both}
+		.col-12{width:100%}
+		.col-10{width:83.3%}
+		.col-8{width:66.6%}
+		.col-6{width:50%}
+		.col-5{width:41.65%}
+		.col-4{width:33.3%}
+		.floated{float:left;padding:10px}
+		.container{padding:60px 0;background:url(http://static.wixstatic.com/media/9631ca_c196f2a338a848668b6766a9d5d07ee4.jpg_srz_p_1140_896_75_22_0.50_1.20_0.00_jpg_srz) 50% 20% scroll no-repeat;background-size:130%}
+		img{width:100%} h1{font-size:2em} h2{font-size:1.4em;line-height:3}
+		.inner{position:relative;max-width:980px;margin:0 auto}
+		.inner-fluid{position:relative;max-width:100%;}
+		.header{background:#96CD36;box-shadow:rgba(0, 0, 0, 0.7) 0 0 5px}
+		.header .inner,.header .inner-fluid{background:#575757;height:150px;overflow:hidden}
+		.header .inner-fluid
+		.logo{display:inline-block;width:150px;font-size:0;margin-top:-5px}
+		.slogan{display:inline-block;color:#f5f5f5;font:bold 1.9em "Enriqueta",Georgia,"Times New Roman",serif;padding:0 20px;vertical-align:top}
+		.slogan p{margin-bottom:10px}
+		.slogan p:first-letter{color:#96CD36}
+		.slogan p:nth-child(2){margin-left:30px}
+		.slogan p:nth-child(3){margin-left:60px}
+		.submenu,.nav li,.nav a,.request{-webkit-transition:all .3s;transition:all .3s}
+		.nav{position:absolute;top:20%;right:0;padding:0 30px}
+		.nav-inner{position:relative}
+		.nav li{display:inline-block;line-height:4.8;vertical-align: top}
+		.nav li a{color:#f5f5f5;text-transform:uppercase;padding:30px 5px;font-size:0.75em}
+		.nav li:hover > a{background:#f5f5f5;color:#96CD36;border-top:1px solid #000;border-bottom:1px solid #000}
+		.submenu{margin-top:10px;display:none}
+		.submenu li{display:block;line-height:initial}
+		.submenu li a{display:block;padding:5px;border-radius:12px;color:#f1f1f1;text-align:center}
+		.submenu li a:hover{background:#f1f1f1;color:#96CD36;border:none}
+		.current{background:#96CD36;color:#575757 !important;border-top:1px solid #000;border-bottom:1px solid #000}
+		.has-kids:hover > .submenu{display:block}
+		.blurb{color:#346904;background:rgba(255, 255, 255, 0.8);padding:10px;margin-bottom:30px}
+		.blurb p{line-height:1.5;margin-bottom:15px;font-weight:bold}
+		.aside{background:#96CD36;color:#f1f1f1;padding:30px 10px;margin-top:80px}
+		.aside blockquote{font-size:1.8em;padding:30px 0}
+		.request{display:block;width:60%;margin:0 auto;background:#96CD36;color:#f1f1f1;text-transform:capitalize;box-shadow:rgba(0, 0, 0, 0.6) 0 1px 4px;border-radius:5px;padding:10px 50px;text-align:center}
+		.request:hover{background:#575757}
+		.footer{padding:30px 0;background:#96CD36;color:#f5f5f5;border-top:4px solid #575757}
+		 
+		 #admin-main{height: 600px;}
+		 .center-block{display:block;margin:0 auto}
+		 .center{text-align:center;}
+		 #admin-login-cont{position:relative; padding: 45px 20px; margin-top:0px;/*background:rgba(255, 255, 255, 0.9);border-radius:5px; border: 1px solid #ccc;*/background: none;border: none;margin: 50px auto;}
+		 #admin-login-cont h2{color: #346904}
+		 #admin-login input,#admin-login label{display:block}
+		 #admin-login label{display:block; margin-bottom: 5px}
+		 #admin-login .inputfield {height:40px; width: 100%;background-color: rgba(204, 204, 204, 0.5);}
+		 #admin-login .inputfield {margin-bottom: 20px}
+		 #admin-login .btn {padding: 10px 20px; width: auto;background-color: rgba(204, 204, 204, 0.5); border-radius:5px;cursor:pointer}
+		 #admin-login .btn:hover{background-color:rgba(204, 204, 204, 1)}
+		 #admin-login .btn:active{background-color:#AAA}
+	</style>
+</head>
+<body>
+<div class="header">
+	<div class="inner-fluid clearfix">
+		<div class="logo">
+			<a href="#"><img src="http://static.wixstatic.com/media/9631ca_65b15fb5857947f6a5449e82d9e60b1b.jpg_256"></a>
+		</div>
+		<h1 class="slogan">
+			<p>Culturally</p>
+			<p>Yours</p>
+			<p>Interpreting</p>
+		</h1>
+	</div>
+</div>
+<main id="admin-main" class="container clearfix">
+	<div class="inner-fluid">
+		<div id="admin-login-cont"class="col-4 center-block">
+			<h2 class="center">Admin Console Log In</h2>
+			<form id="admin-login" name="admin-login" action="admin.html" method="POST" enctype="url-endcoded">
+				<label for="name"> Username:</label>
+				<input class="inputfield" type="text" name="username"></input>
+				<label for="password"> Password:</label>
+				<input class="inputfield" type="password" name="password">
+				<input class="btn" type="submit" name= "submit" value="Log In">
+			</form>
+		</div>
+
+	</div>
+</main>
+<div class="footer">
+	<div class="inner-fluid">
+		<p> Copyright &copy; 2014-2015 Culturally Yours Interpreting, Inc-All Rights Reserved.</p>
+	</div>
+</div>
+</body>
+</html>
