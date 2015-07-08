@@ -4,7 +4,7 @@ Tools Used:
 JAX-RS Web Service Tool for Java Development, 
 MySQL, 
 jQuery/Javascript, 
-HTML5/CSS3/
+HTML5/CSS3.
 
 
 
